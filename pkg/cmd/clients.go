@@ -122,8 +122,9 @@ When used standalone, a namespace must be specified by providing the --namespace
   kubectl plugin mobile create client <name> <clientType>
   oc plugin mobile create client <name> <clientType>`,
 		RunE: func(cmd *cobra.Command, args []string) error {
-			if len(args) != 2 {
-				return errors.New("expected a name and a clientType")
+
+			if len(args) != 3 {
+				return cmd.Usage()
 			}
 			name := args[0]
 			clientType := args[1]
